@@ -1,0 +1,13 @@
+services:
+  web:
+    env_file: .env
+    build:
+      context: .
+      target: runner
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    command: npm run start
+    ports:
+      - '3000:3000'
