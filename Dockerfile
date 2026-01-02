@@ -1,11 +1,11 @@
-FROM node:22-alpine@sha256:c06bea602e410a3321622c7782eb35b0afb7899d9e28300937ebf2e521902555 AS deps
+FROM node:25-alpine@sha256:f4769ca6eeb6ebbd15eb9c8233afed856e437b75f486f7fccaa81d7c8ad56007 AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN  npm install --omit=dev
 
-FROM node:22-alpine@sha256:c06bea602e410a3321622c7782eb35b0afb7899d9e28300937ebf2e521902555 AS builder
+FROM node:25-alpine@sha256:f4769ca6eeb6ebbd15eb9c8233afed856e437b75f486f7fccaa81d7c8ad56007 AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -14,7 +14,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm run build
 
-FROM node:22-alpine@sha256:c06bea602e410a3321622c7782eb35b0afb7899d9e28300937ebf2e521902555 AS runner
+FROM node:25-alpine@sha256:f4769ca6eeb6ebbd15eb9c8233afed856e437b75f486f7fccaa81d7c8ad56007 AS runner
 RUN apk add --no-cache git
 WORKDIR /app
 
