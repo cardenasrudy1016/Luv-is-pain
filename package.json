@@ -30,7 +30,7 @@
     "@trpc/server": "10.45.2",
     "fast-safe-stringify": "2.1.1",
     "fuse.js": "7.0.0",
-    "next": "14.2.5",
+    "next": "16.2.4",
     "next-auth": "4.24.7",
     "octokit": "3.2.1",
     "probot": "13.3.6",
